@@ -5,7 +5,7 @@ import utilities.Driver;
 
 public class Page {
     public Page(){
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(),this);}
 
         //Ceylan Bitimli
 
@@ -925,7 +925,7 @@ public class Page {
 
 
 
-    }
+
 
 
 
