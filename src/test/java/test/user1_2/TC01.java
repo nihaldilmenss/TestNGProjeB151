@@ -7,4 +7,9 @@ public class TC01 {
     public void test01() {
         System.out.println("ceylan");
     }
+
+    @Test
+    public void test02() {
+        System.out.println("selam");
+    }
 }
