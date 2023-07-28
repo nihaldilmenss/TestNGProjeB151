@@ -139,6 +139,7 @@ public class TC02 extends ExtentReport {
         ReusableMethods.webElementResmi(pages.VeriyWeak);
         extentTest.info("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
 
+
         // 20	"I agree to the privacy policy" seçenegine tıkla
 
         // 21	SIGN UP butonuna tıkla
@@ -186,6 +187,6 @@ public class TC02 extends ExtentReport {
         //  29	My Account  sayfasını göründüğünü doğrula
         assert pages.MyAccount.isDisplayed();
         extentTest.pass("Hesaba basarili bir sekilde giris yapildi ve My Account yazisinin gorunurlugu test edildi");
-        extentReports.flush();
+
     }
 }
