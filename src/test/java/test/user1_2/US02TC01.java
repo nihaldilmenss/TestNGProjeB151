@@ -14,12 +14,13 @@ import utilities.ReusableMethods;
 public class US02TC01 extends ExtentReport {
     @Test
     public void test01() {
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+
         extentTest = extentReports.createTest("Ceylan" , "Allovercommerce Test Edebilmeli");
         Page pages=new Page();
         Actions actions=new Actions(Driver.getDriver());
 
         // Anasayfaya git
-        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         ReusableMethods.bekle(3);
         assert pages.anaSayfa.isDisplayed();
         extentTest.pass("Ana Sayfaya gidildi ve dogrulandi");
@@ -79,7 +80,7 @@ public class US02TC01 extends ExtentReport {
         Assert.assertTrue(pages.kayitliMesaj.isDisplayed());
         ReusableMethods.webElementResmi(pages.kayitliMesaj);
         extentTest.pass("An account is already registered with that username. Please choose another. mesjının göründğü doğrulandı");
-        extentReports.flush();
+
     }
 
 }
