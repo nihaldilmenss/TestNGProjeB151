@@ -7,4 +7,9 @@ public class TC19 {
 
 
     // pull push deneme
+
+
+    //2. deneme
+
+
 }
