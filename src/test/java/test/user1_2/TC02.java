@@ -2,6 +2,7 @@ package test.user1_2;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -78,18 +79,20 @@ public class TC02 extends ExtentReport {
         // 10	SİGN UP butonuna tıkla
         pages.signUpButton.click();
         extentTest.info("Sign Up butonuna tiklandi");
+        ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Email mesaj1");
 
         // 11	Lütfen e-posta adresine bir  @" işareti ekleyin" mesajının görünür oldugunu doğrula
         String emailMesaj2 = pages.email.getAttribute("validationMessage");
         System.out.println("@ işareti ekle  = " + emailMesaj2);
-        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        ReusableMethods.bekle(2);
         softAssert.assertTrue(emailMesaj2.contains("Lütfen e-posta adresine bir  '@' işareti ekleyin."));
         extentTest.pass("Hata mesaji alindi ve test edildi");
 
 
         // 12	email'in sonuna @ ekle
         pages.email.sendKeys(ConfigReader.getProperty("emeileEkle"));
-        ReusableMethods.webElementResmi(pages.email);
+        ReusableMethods.tumSayfaResmi("email mesajı2");
         ReusableMethods.bekle(5);
         extentTest.info(" hatali email'in sonuna @ isareti eklendi");
 
@@ -97,13 +100,13 @@ public class TC02 extends ExtentReport {
         pages.signUpButton.click();
         extentTest.info("Sign Up butonuna tiklandi");
 
-
         // 14	"Lütfen  "@" işaretinden sonra gelen kısmı ekleyin"  mesajını doğrula
+        ReusableMethods.tumSayfaResmi("Email mesajı3");
         String emailMesaj3 = pages.email.getAttribute("validationMessage");
-        ReusableMethods.webElementResmi(pages.email);
         System.out.println("@ işaretinden Sonra = " + emailMesaj3);
         softAssert.assertTrue(emailMesaj3.contains("Lütfen  '@' işaretinden sonra gelen kısmı ekleyin."));
         extentTest.pass("Hata mesaji alindi ve test edildi");
+        ReusableMethods.bekle(2);
 
 
         // emeil alanını sıl
@@ -135,9 +138,9 @@ public class TC02 extends ExtentReport {
         extentTest.pass("Password kriterlerine uymayan hatali bir password girildi");
 
         // 19	"Weak - Please enter a stronger password." mesajının görünürlüğünü dogrula
-        Assert.assertTrue(pages.VeriyWeak.isDisplayed());
+        softAssert.assertTrue(pages.VeriyWeak.isDisplayed(),"Weak Mesajı");
         ReusableMethods.webElementResmi(pages.VeriyWeak);
-        extentTest.info("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
+        extentTest.fail("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
 
 
         // 20	"I agree to the privacy policy" seçenegine tıkla
