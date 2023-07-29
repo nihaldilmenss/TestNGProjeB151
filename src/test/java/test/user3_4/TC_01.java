@@ -7,5 +7,6 @@ public class TC_01 {
     @Test
     public void testName() {
         Faker faker =new Faker();
+        //dedisiklik oldugunu belli etmek ve denemek icin burayi yaziyorum, silebililirsiniz daha sonra
     }
 }
