@@ -14,9 +14,9 @@ import utilities.ReusableMethods;
 public class TC01 extends ExtentReport {
     @Test
     public void test01() {
-        extentTest = extentReports.createTest("Ceylan" , "Allovercommerce Test Edebilmeli");
-        Faker faker= new Faker();
-        Page pages=new Page();
+        extentTest = extentReports.createTest("Ceylan", "Allovercommerce Test Edebilmeli");
+        Faker faker = new Faker();
+        Page pages = new Page();
 
         // Anasayfaya git
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
@@ -45,7 +45,7 @@ public class TC01 extends ExtentReport {
 
         Driver.getDriver().switchTo().window(Driver.getDriver().getWindowHandles().toArray()[0].toString());
         ReusableMethods.bekle(3);
-        pages.email.sendKeys(Keys.CONTROL,"v");
+        pages.email.sendKeys(Keys.CONTROL, "v");
         extentTest.info("Email alanina tiklandi ve kopyalanan  email girildi");
         ReusableMethods.bekle(3);
 
@@ -72,9 +72,6 @@ public class TC01 extends ExtentReport {
 
 
     }
-
-    @Test
-    public void test02() {
-        System.out.println("selam");
-    }
 }
+
+
