@@ -26,6 +26,7 @@ public class TC11 extends ExtentReport {
         ReusableMethods.webElementResmi(pages.anasayfas);
         extentTest.pass("Ana Sayfaya gidildi ve dogrulandi");
 
+
        /* //Sign in butonuna tıkla
         pages.signInButton.click();
         extentTest.info("Sıgn In butonuna tiklandi");
@@ -44,7 +45,7 @@ public class TC11 extends ExtentReport {
         pages.passwords.sendKeys("admins.");
         ReusableMethods.bekle(3);
         Assert.assertTrue(pages.passwords.getText().contains("admins12."));
-        extentTest.info("password alanına username girildi");
+        extentTest.info("password alanına user name girildi");
 
 
         //Sign in butonuna tıkla
