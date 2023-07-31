@@ -48,6 +48,91 @@ public class Page {
 
 
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> master
         //Ahmet Bora
 
 
@@ -532,6 +617,22 @@ public class Page {
 
 
 
+<<<<<<< HEAD
+        //Saadet Göker
+    @FindBy (xpath = "(//p)[3]")
+    public WebElement anasayfas;
+    @FindBy (xpath = "(//Sign In)[0]")
+    public WebElement signInButton;
+
+    @FindBy (xpath = "(//*[@name='username'])[1]")
+    public WebElement userNames;
+
+    @FindBy(xpath = "(//*[@name='password'])[1]")
+    public WebElement passwords;
+
+
+
+=======
 
 
 
@@ -563,6 +664,7 @@ public class Page {
 
 
     //Saadet Göker
+>>>>>>> master
 
 
 
