@@ -51,7 +51,7 @@ public class US02TC01 extends ExtentReport {
 
         // An account is already registered with your email address mesajının göründüğünü doğrula.
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        Assert.assertTrue(pages.kayitliMesaj.isDisplayed());
+        Assert.assertEquals("An account is already registered with your email address. Please log in.",pages.kayitliMesaj.getText());
         ReusableMethods.bekle(3);
         ReusableMethods.webElementResmi(pages.kayitliMesaj);
         extentTest.pass("An account is already registered with your email address mesajının göründüğü doğrulandı");
@@ -76,11 +76,12 @@ public class US02TC01 extends ExtentReport {
         ReusableMethods.bekle(3);
 
         // "An account is already registered with that username. Please choose another." mesajının göründüğünü doğrula.
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertEquals("An account is already registered with that username. Please choose another.",pages.kayitliMesaj.getText());
         Assert.assertTrue(pages.kayitliMesaj.isDisplayed());
         ReusableMethods.webElementResmi(pages.kayitliMesaj);
         extentTest.pass("An account is already registered with that username. Please choose another. mesjının göründğü doğrulandı");
 
     }
+
 
 }
