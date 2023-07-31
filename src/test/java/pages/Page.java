@@ -663,6 +663,39 @@ public class Page {
 
 
         //Gökay Terzi
+   @FindBy(xpath = "(//*[.='Sign In'])[1]")
+       public WebElement signInButton;
+    @FindBy(xpath = "//*[@id='username']")
+    public WebElement usernameOrEmailAdress;
+    @FindBy(xpath = "//*[@id='password']")
+    public WebElement password;
+    @FindBy(xpath = "//*[@name='login']")
+    public WebElement signInButton2;
+    @FindBy(xpath = "(//*[.='My Account'])[3]")
+    public WebElement myAccountButton;
+    @FindBy(xpath = "(//*[@class='text-uppercase text-center mb-0'])[4]")
+    public WebElement accountDetailsButton;
+    @FindBy(xpath = "//*[@class='icon-box-title text-normal']")
+    public WebElement accountDetailText;
+    @FindBy(xpath = "//*[@autocomplete='given-name']")
+    public WebElement firstName;
+    @FindBy(xpath = "//*[@id='account_last_name']")
+    public WebElement lastName;
+    @FindBy(xpath = "//*[@id='account_display_name']")
+    public WebElement displayName;
+    @FindBy(xpath = "//*[@id='account_email']")
+    public WebElement emailAddress;
+    @FindBy(xpath = "//button[@name='save_account_details']")
+    public WebElement saveChanges;
+    @FindBy(xpath = "//*[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement accountDetailsChanged;
+    @FindBy(xpath = "//*[@data-id='user_description']")
+    public WebElement biography;
+    ///********
+    @FindBy(xpath = "//*[text()='Become a Vendor']")
+    public WebElement becomeAVendor;
+    @FindBy(xpath = "//*[text()='Store Manager']")
+    public WebElement storeManager;
 
 
 
