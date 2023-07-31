@@ -66,7 +66,7 @@ public class TC01 extends ExtentReport {
         extentTest.info("Sign Up butonuna tiklandi");
 
         // "Sign Out" yazısının görünürlüğünü dogrula
-        Assert.assertTrue(pages.signOut.isDisplayed());
+        Assert.assertEquals("Sign Out",pages.signOut.getText());
         ReusableMethods.webElementResmi(pages.signOut);
         extentTest.pass("Sayfaya giriş yapıldiği doğrulandı");
 

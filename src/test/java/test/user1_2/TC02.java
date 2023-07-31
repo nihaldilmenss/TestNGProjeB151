@@ -2,6 +2,7 @@ package test.user1_2;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +22,6 @@ public class TC02 extends ExtentReport {
         Actions actions= new Actions(Driver.getDriver());
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         SoftAssert softAssert = new SoftAssert();
-
 
 
         // 1	Anasayfaya git
@@ -78,19 +78,21 @@ public class TC02 extends ExtentReport {
         // 10	SİGN UP butonuna tıkla
         pages.signUpButton.click();
         extentTest.info("Sign Up butonuna tiklandi");
+        ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Email mesaj1");
 
         // 11	Lütfen e-posta adresine bir  @" işareti ekleyin" mesajının görünür oldugunu doğrula
         String emailMesaj2 = pages.email.getAttribute("validationMessage");
         System.out.println("@ işareti ekle  = " + emailMesaj2);
-        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        ReusableMethods.bekle(2);
         softAssert.assertTrue(emailMesaj2.contains("Lütfen e-posta adresine bir  '@' işareti ekleyin."));
         extentTest.pass("Hata mesaji alindi ve test edildi");
 
 
         // 12	email'in sonuna @ ekle
         pages.email.sendKeys(ConfigReader.getProperty("emeileEkle"));
-        ReusableMethods.webElementResmi(pages.email);
-        ReusableMethods.bekle(5);
+        ReusableMethods.tumSayfaResmi("email mesajı2");
+        ReusableMethods.bekle(3);
         extentTest.info(" hatali email'in sonuna @ isareti eklendi");
 
         // 13	SİGN UP butonuna tıkla
@@ -100,47 +102,45 @@ public class TC02 extends ExtentReport {
 
         // 14	"Lütfen  "@" işaretinden sonra gelen kısmı ekleyin"  mesajını doğrula
         String emailMesaj3 = pages.email.getAttribute("validationMessage");
-        ReusableMethods.webElementResmi(pages.email);
         System.out.println("@ işaretinden Sonra = " + emailMesaj3);
         softAssert.assertTrue(emailMesaj3.contains("Lütfen  '@' işaretinden sonra gelen kısmı ekleyin."));
         extentTest.pass("Hata mesaji alindi ve test edildi");
+        ReusableMethods.bekle(2);
 
 
-        // emeil alanını sıl
+        // 15 emeil alanını sıl
         pages.email.clear();
         ReusableMethods.bekle(3);
         extentTest.pass("Email alanı silindi");
 
-        // 15	email alanına gecerli bır email gir
+        // 16	email alanına gecerli bır email gir
         pages.email.sendKeys(faker.internet().emailAddress());
         ReusableMethods.bekle(5);
         extentTest.info("gecerli bir email yazıldı");
 
-        // 16	SİGN UP butonuna tıkla
+        // 17	SİGN UP butonuna tıkla
         pages.signUpButton.click();
         ReusableMethods.bekle(3);
         extentTest.info("Sign Up butonuna tiklandi");
 
-        // 17	"Lütfen bu alanı doldurun" mesajınin görünürlüğünü dogrula(password alanı)
+        // 18	"Lütfen bu alanı doldurun" mesajınin görünürlüğünü dogrula(password alanı)
         String passwordMesaj = pages.sifre.getAttribute("validationMessage");
         ReusableMethods.webElementResmi(pages.RegisterEkrani);
         System.out.println("password Mesaji = " + passwordMesaj);
         assert passwordMesaj.contains("Lütfen bu alanı doldurun");
         extentTest.pass("Hata mesaji alindi ve test edildi");
 
-        // 18	Password alanına 12 karakterden az bir password gir.
+        // 19	Password alanına 12 karakterden az bir password gir.
         pages.sifre.sendKeys(ConfigReader.getProperty("weakPassword"));
         ReusableMethods.bekle(3);
         ReusableMethods.webElementResmi(pages.RegisterEkrani);
         extentTest.pass("Password kriterlerine uymayan hatali bir password girildi");
 
-        // 19	"Weak - Please enter a stronger password." mesajının görünürlüğünü dogrula
-        Assert.assertTrue(pages.VeriyWeak.isDisplayed());
+        // 20	"Weak - Please enter a stronger password." mesajının görünürlüğünü dogrula
+        Assert.assertEquals(pages.VeriyWeak.getText(),"Weak - Please enter a stronger password.");
         ReusableMethods.webElementResmi(pages.VeriyWeak);
-        extentTest.info("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
+        extentTest.fail("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
 
-
-        // 20	"I agree to the privacy policy" seçenegine tıkla
 
         // 21	SIGN UP butonuna tıkla
         pages.signUpButton.click();
@@ -162,31 +162,37 @@ public class TC02 extends ExtentReport {
         ReusableMethods.bekle(3);
         extentTest.info("Password alanina kriterlere uyan bir password basarili bir sekilde girildi");
 
-        // 25	SİGN UP butonuna tıkla
+        // 25	"I agree to the privacy policy" seçenegine tıkla
+        js.executeScript("arguments[0].click();",pages.IAgree);
+        ReusableMethods.bekle(5);
+        extentTest.info("I Agree butonuna tiklandi");
+
+        // 26	SİGN UP butonuna tıkla
         pages.signUpButton.click();
         ReusableMethods.bekle(3);
         extentTest.info("Sign Up butonuna tiklandi");
 
-        // 26	İlerlemek istiyorsanız lütfen kutuyu işaretleyin mesajını göründüğünü doğrula
+        // 27	İlerlemek istiyorsanız lütfen kutuyu işaretleyin mesajını göründüğünü doğrula
         ReusableMethods.webElementResmi(pages.RegisterEkrani);
         String agreMesaj = pages.IAgree.getAttribute("validationMessage");
         System.out.println("I agree mesajı = " + agreMesaj);
         ReusableMethods.bekle(5);
         extentTest.pass("Hata mesaji alindi ve test edildi");
 
-        // 27	"I agree to the privacy policy" seçenegine tıkla
+        // 28	"I agree to the privacy policy" seçenegine tıkla
         js.executeScript("arguments[0].click();",pages.IAgree);
         ReusableMethods.bekle(5);
         extentTest.info("I Agree butonuna tiklandi");
 
-        // 28	SİGN UP butonuna tıkla
+        // 29	SİGN UP butonuna tıkla
         pages.signUpButton.click();
         ReusableMethods.bekle(5);
         extentTest.info("Sign Up butonuna tiklandi");
 
-        //  29	My Account  sayfasını göründüğünü doğrula
-        assert pages.MyAccount.isDisplayed();
-        extentTest.pass("Hesaba basarili bir sekilde giris yapildi ve My Account yazisinin gorunurlugu test edildi");
+        //30 "Sign Out" yazısının görünürlüğünü dogrula
+        Assert.assertEquals(pages.signOut.getText(),"Sign Out");
+        ReusableMethods.webElementResmi(pages.signOut);
+        extentTest.pass("Sayfaya giriş yapıldiği doğrulandı");
 
     }
 }
