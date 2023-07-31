@@ -48,7 +48,6 @@ public class Page {
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -131,8 +130,7 @@ public class Page {
 
 
 
-=======
->>>>>>> master
+
         //Ahmet Bora
 
 
@@ -617,12 +615,12 @@ public class Page {
 
 
 
-<<<<<<< HEAD
+
         //Saadet Göker
     @FindBy (xpath = "(//p)[3]")
     public WebElement anasayfas;
     @FindBy (xpath = "(//Sign In)[0]")
-    public WebElement signInButton;
+    public WebElement signInButton1;
 
     @FindBy (xpath = "(//*[@name='username'])[1]")
     public WebElement userNames;
@@ -631,8 +629,6 @@ public class Page {
     public WebElement passwords;
 
 
-
-=======
 
 
 
@@ -664,7 +660,7 @@ public class Page {
 
 
     //Saadet Göker
->>>>>>> master
+
 
 
 
