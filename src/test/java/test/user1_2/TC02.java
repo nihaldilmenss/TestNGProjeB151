@@ -48,7 +48,7 @@ public class TC02 extends ExtentReport {
         // 5	"Lütfen bu alanı doldurun" mesajının görünürlüğünü doğrula(Username alanı)
         ReusableMethods.webElementResmi(pages.RegisterEkrani);
         String userNameMesaj = pages.userName.getAttribute("validationMessage");
-        System.out.println("Usename alanı : "+userNameMesaj);
+        System.out.println("Username alanı : "+userNameMesaj);
         assert userNameMesaj.contains("Lütfen bu alanı doldurun.");
         extentTest.pass("Hata mesaji alindi ve test edildi");
 
@@ -99,8 +99,8 @@ public class TC02 extends ExtentReport {
         pages.signUpButton.click();
         extentTest.info("Sign Up butonuna tiklandi");
 
-
         // 14	"Lütfen  "@" işaretinden sonra gelen kısmı ekleyin"  mesajını doğrula
+        ReusableMethods.tumSayfaResmi("Email mesajı3");
         String emailMesaj3 = pages.email.getAttribute("validationMessage");
         System.out.println("@ işaretinden Sonra = " + emailMesaj3);
         softAssert.assertTrue(emailMesaj3.contains("Lütfen  '@' işaretinden sonra gelen kısmı ekleyin."));
@@ -141,43 +141,44 @@ public class TC02 extends ExtentReport {
         ReusableMethods.webElementResmi(pages.VeriyWeak);
         extentTest.fail("Weak - Please enter a stronger password. mesaji alindi ve test edildi");
 
+        // 21	Passwor alanındaki passwordu sil.
+        pages.sifre.clear();
+        ReusableMethods.bekle(2);
+        extentTest.info("Password alanindaki hatali password silindi");
 
-        // 21	SIGN UP butonuna tıkla
+        //22 Password alanına 9 karakterli  harf , rakam, spesifik karakter içeren bir password gir.
+        pages.sifre.sendKeys(ConfigReader.getProperty("password2"));
+        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        extentTest.info("kriterlere uygun password girildi");
+
+        //23 "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower
+        // case letters, numbers, and symbols like ! "" ? $ % ^ & ). Mesajın gorundugunu dogrula"
+        Assert.assertEquals(pages.yanlisPasswordMesaji.getText(),"Hint: The password should be at least twelve characters long." +
+                " To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ & ).");
+        ReusableMethods.webElementResmi(pages.yanlisPasswordMesaji);
+        extentTest.pass("Mesajın gorunurlugu dogrulandı");
+
+
+        //24 SIGN UP butonuna tıkla
         pages.signUpButton.click();
         extentTest.info("Sign Up butonuna tiklandi");
 
-        // 22	Kayıt yapılamadığını doğrula
+
+        //25	Kayıt yapılamadığını doğrula
         js.executeScript("arguments[0].click();", pages.signUpButton);
         assert pages.signUpButton.isEnabled();
         ReusableMethods.bekle(3);
         extentTest.pass("Kayit yapilamadigi dogrulandi");
 
-        // 23	Passwor alanındaki passwordu sil.
+        //26 Passwor alanındaki passwordu sil.
         pages.sifre.clear();
         ReusableMethods.bekle(2);
         extentTest.info("Password alanindaki hatali password silindi");
 
-        // 24	Password alanına 12 karakterli en az bir harf , rakam, spesifik karakter içeren bir password gir.
+        // 27	Password alanına 12 karakterli en az bir harf , rakam, spesifik karakter içeren bir password gir.
         pages.sifre.sendKeys(ConfigReader.getProperty("password1"));
         ReusableMethods.bekle(3);
         extentTest.info("Password alanina kriterlere uyan bir password basarili bir sekilde girildi");
-
-        // 25	"I agree to the privacy policy" seçenegine tıkla
-        js.executeScript("arguments[0].click();",pages.IAgree);
-        ReusableMethods.bekle(5);
-        extentTest.info("I Agree butonuna tiklandi");
-
-        // 26	SİGN UP butonuna tıkla
-        pages.signUpButton.click();
-        ReusableMethods.bekle(3);
-        extentTest.info("Sign Up butonuna tiklandi");
-
-        // 27	İlerlemek istiyorsanız lütfen kutuyu işaretleyin mesajını göründüğünü doğrula
-        ReusableMethods.webElementResmi(pages.RegisterEkrani);
-        String agreMesaj = pages.IAgree.getAttribute("validationMessage");
-        System.out.println("I agree mesajı = " + agreMesaj);
-        ReusableMethods.bekle(5);
-        extentTest.pass("Hata mesaji alindi ve test edildi");
 
         // 28	"I agree to the privacy policy" seçenegine tıkla
         js.executeScript("arguments[0].click();",pages.IAgree);
@@ -186,13 +187,29 @@ public class TC02 extends ExtentReport {
 
         // 29	SİGN UP butonuna tıkla
         pages.signUpButton.click();
+        ReusableMethods.bekle(3);
+        extentTest.info("Sign Up butonuna tiklandi");
+
+        // 30	İlerlemek istiyorsanız lütfen kutuyu işaretleyin mesajını göründüğünü doğrula
+        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        String agreMesaj = pages.IAgree.getAttribute("validationMessage");
+        System.out.println("I agree mesajı = " + agreMesaj);
+        ReusableMethods.bekle(5);
+        extentTest.pass("Hata mesaji alindi ve test edildi");
+
+        // 31	"I agree to the privacy policy" seçenegine tıkla
+        js.executeScript("arguments[0].click();",pages.IAgree);
+        ReusableMethods.bekle(5);
+        extentTest.info("I Agree butonuna tiklandi");
+
+        // 32	SİGN UP butonuna tıkla
+        pages.signUpButton.click();
         ReusableMethods.bekle(5);
         extentTest.info("Sign Up butonuna tiklandi");
 
-        //30 "Sign Out" yazısının görünürlüğünü dogrula
+        //33 "Sign Out" yazısının görünürlüğünü dogrula
         Assert.assertEquals(pages.signOut.getText(),"Sign Out");
         ReusableMethods.webElementResmi(pages.signOut);
         extentTest.pass("Sayfaya giriş yapıldiği doğrulandı");
-
     }
 }

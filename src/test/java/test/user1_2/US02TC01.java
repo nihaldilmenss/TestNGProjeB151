@@ -20,6 +20,7 @@ public class US02TC01 extends ExtentReport {
         Page pages=new Page();
         Actions actions=new Actions(Driver.getDriver());
 
+
         // Anasayfaya git
         ReusableMethods.bekle(3);
         assert pages.anaSayfa.isDisplayed();
@@ -30,14 +31,55 @@ public class US02TC01 extends ExtentReport {
         extentTest.info("Register butonuna tiklandi");
         ReusableMethods.bekle(3);
 
-        // Username alanına tıkla ve kayıtlı username gir
-        // Email alanına tıkla  ve kayıtlı email gir
-        // Password alanına tıkla geçerli password gir
-        pages.userName.sendKeys(ConfigReader.getProperty("username"), Keys.TAB,
-                ConfigReader.getProperty("email"),Keys.TAB,ConfigReader.getProperty("password1"));
-        extentTest.info("Username,Email alanı ve password alanına gecerli bilgiler girildi ");
+        //SİGN UP butonuna tıkla
+        pages.signUpButton.click();
+        extentTest.info("Sign Up butonuna tiklandi");
         ReusableMethods.bekle(3);
 
+        //"Lütfen bu alanı doldurun" mesajının görünürlüğünü doğrula(username)
+        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        String userNameMesaj = pages.userName.getAttribute("validationMessage");
+        System.out.println("Username alanı : "+userNameMesaj);
+        assert userNameMesaj.contains("Lütfen bu alanı doldurun.");
+        extentTest.pass("Hata mesaji alindi ve test edildi");
+
+        // Username alanına tıkla ve kayıtlı username gir
+        pages.userName.sendKeys(ConfigReader.getProperty("username"));
+        ReusableMethods.bekle(2);
+        extentTest.info("Username alanina gecerli bir username girildi");
+
+        //SİGN UP butonuna tıkla
+        pages.signUpButton.click();
+        extentTest.info("Sign Up butonuna tiklandi");
+        ReusableMethods.bekle(3);
+
+        //"Lütfen bu alanı doldurun" mesajının görünürlüğünü doğrula(email alanı)
+        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        String emailMesaj= pages.email.getAttribute("validationMessage");
+        System.out.println("Email alanı : " + emailMesaj);
+        assert emailMesaj.contains("Lütfen bu alanı doldurun.");
+        ReusableMethods.bekle(3);
+        extentTest.pass("Hata mesaji alindi ve test edildi");
+
+        // Email alanına tıkla  ve kayıtlı email gir
+        pages.email.sendKeys(ConfigReader.getProperty("email"));
+        extentTest.info("gecerli bir email yazıldı");
+
+        //SİGN UP butonuna tıkla
+        pages.signUpButton.click();
+        extentTest.info("Sign Up butonuna tiklandi");
+        ReusableMethods.bekle(3);
+
+        //"Lütfen bu alanı doldurun" mesajınin görünürlüğünü dogrula(password alanı)
+        String passwordMesaj = pages.sifre.getAttribute("validationMessage");
+        ReusableMethods.webElementResmi(pages.RegisterEkrani);
+        System.out.println("password Mesaji = " + passwordMesaj);
+        assert passwordMesaj.contains("Lütfen bu alanı doldurun");
+        extentTest.pass("Hata mesaji alindi ve test edildi");
+
+        // Password alanına tıkla geçerli password gir
+        pages.sifre.sendKeys(ConfigReader.getProperty("password1"));
+        extentTest.info("Password alanına gecerlı bır password girildi");
 
         // "I agree to the privacy policy" seçenegine tıkla
         pages.IAgree.click();

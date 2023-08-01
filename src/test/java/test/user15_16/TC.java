@@ -1,2 +1,3 @@
-package test.user15_16;public class TC {
+package test.user15_16;
+public class TC {
 }
