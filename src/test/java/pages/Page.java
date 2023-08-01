@@ -28,19 +28,18 @@ public class Page {
         public WebElement fakeMailCopy;
         @FindBy(xpath = "//*[text()='Sign Out']")
         public WebElement signOut;
-
         @FindBy(xpath = "(//h2)[1]")
         public  WebElement MyAccount;
         @FindBy(xpath = "//*[@class='nav-link']")
         public  WebElement signUp;
         @FindBy(xpath = "//*[@class='woocommerce-password-strength short']")
         public  WebElement VeriyWeak;
-
         @FindBy(xpath = "//*[@class='tab-pane active in']")
         public  WebElement RegisterEkrani;
-
         @FindBy(xpath = "(//*[@class='submit-status'])[2]")
         public  WebElement  kayitliMesaj;
+        @FindBy(xpath = "//*[@class='woocommerce-password-hint']")
+        public  WebElement yanlisPasswordMesaji;
 
 
 
