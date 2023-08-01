@@ -698,7 +698,8 @@ public class Page {
     public WebElement storeManager;
 
 
-
+ // evet yoksa dün kızarırdı. normaldi hatta herşey
+   //sıfırdan mı yapssak yine
 
 
 
