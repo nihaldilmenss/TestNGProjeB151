@@ -848,36 +848,97 @@ public class Page {
 
 
 
+    @FindBy(xpath = "//span[text()='Sign In']")
+    public WebElement signIn;
+
+    @FindBy(xpath = "//button[@name='login']")
+    public WebElement logInButton;
+
+    @FindBy(xpath = "(//input[@type='text'])[1]")
+    public WebElement username;
+
+    //US-15-TC-01
+
+    @FindBy(xpath = "(//h3[@class='elementor-heading-title elementor-size-default'])[4]")
+    public WebElement hesabimYazisi;
 
 
+    @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/'])[1]")
+    public WebElement hesabimButton;
 
 
+    @FindBy(xpath = "//a[text()='Store Manager']")
+    public WebElement storeManagerText;
+
+    @FindBy(xpath = "//a[@href='https://allovercommerce.com/store-manager/']")
+    public WebElement storeManagerButton;
+
+    @FindBy(xpath = "(//span[@class='text'])[4]")
+    public WebElement productYazisi;
+
+    @FindBy(xpath = "//a[@href='https://allovercommerce.com/store-manager/products/']")
+    public WebElement productButton;
+
+    @FindBy(xpath = "(//a[@href='https://allovercommerce.com/store-manager/products-manage/'])[2]")
+    public WebElement addnewButton;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[3]")
+    public WebElement inventoryYazisi;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    public WebElement shippingYazisi;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[7]")
+    public WebElement linkedYazisi;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[8]")
+    public WebElement seoYazisi;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
+    public WebElement advancedYazisi;
+
+    @FindBy(xpath = "//select[@id='product_type']")
+    public WebElement simpleProductYazisi;
 
 
+    @FindBy(xpath = "//option[@value='simple']")
+    public WebElement simpleProductdefault;
 
+    @FindBy(xpath = "//input[@id='is_virtual']")
+    public WebElement virtual;
 
+    @FindBy(xpath = "//input[@id='is_downloadable']")
+    public WebElement downloadable;
 
+    @FindBy(xpath = "//input[@id='regular_price']")
+    public WebElement priceKutu;
 
+    @FindBy(xpath = "//input[@id='sale_price']")
+    public WebElement salePriceKutu;
 
+    @FindBy(xpath = "//input[@id='pro_title']")
+    public WebElement productTitle;
 
+    @FindBy(xpath = "(//span[@class='required'])[1]")
+    public WebElement categoriesYildiz;
 
+    @FindBy(xpath = "(//input[@type='checkbox'])[3]")
+    public WebElement categories1;
 
+    @FindBy(xpath = "(//input[@type='checkbox'])[4]")
+    public WebElement categories2;
 
+    @FindBy(xpath = "(//input[@type='checkbox'])[5]")
+    public WebElement categories3;
 
+    @FindBy(xpath = "(//img[@src='https://allovercommerce.com/wp-content/plugins/wc-frontend-manager/includes/libs/upload/images/Placeholder.png'])[1]")
+    public WebElement resimEkleButton;
 
+    @FindBy(xpath = "//input[@id='wcfm_products_simple_submit_button']")
+    public WebElement submitButton;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//div[@class='wcfm-message']")
+    public WebElement redmesaji;
 
 
 
