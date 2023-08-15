@@ -15,7 +15,7 @@ public class US_16_TC_01 extends ExtentReport {
     @Test
     public void test01() {
 
-
+        //silinebilir daha sonra bu satir
         //https://allovercommerce.com/ adresine gidin.
         //Kayıtlı satıcı e-postası ve şifresi ile giriş yapın.
         //Mağaza müdürü için tıklayın.
